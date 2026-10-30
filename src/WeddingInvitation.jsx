@@ -483,7 +483,7 @@ const styles = {
   galleryFrame: {
     display: "grid",
     gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: 50,
+    gap: 25,
     maxWidth: 700,
     margin: "34px auto 0",
     padding: 16,
