@@ -11,7 +11,7 @@ const image_7 = "/7.jpeg";
 const image_8 = "/8.jpeg";
 const image_9 = "/9.jpeg";
 const image_10 = "/10.jpeg";
-const galleryImages = [image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9, image_10];
+const galleryImages = [image_5, image_2, image_3, image_4, image_1, image_6, image_7, image_8, image_9, image_10];
 const musicSrc = "/classical.mp3";
 const targetDate = new Date("2026-12-06T08:30:00+05:30").getTime();
 
