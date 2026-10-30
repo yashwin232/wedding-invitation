@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 
 const PHOTO_SRC = "/couple.jpg";
-const image_1 = "/1.jpg";
-const image_2 = "/2.jpg";
+const image_1 = "/1.jpeg";
+const image_2 = "/2.jpeg";
 const image_3 = "/3.jpg";
+const image_4 = "/4.jpeg";
+const image_5 = "/5.jpeg";
+const image_6 = "/6.jpeg";
+const image_7 = "/7.jpeg";
+const image_8 = "/8.jpeg";
+const image_9 = "/9.jpeg";
+const image_10 = "/10.jpeg";
+const galleryImages = [image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9, image_10];
 const musicSrc = "/classical.mp3";
 const targetDate = new Date("2026-12-06T08:30:00+05:30").getTime();
 
@@ -292,9 +300,11 @@ export default function WeddingInvitation() {
           <h2 style={styles.sectionTitle}>{t.gallery}</h2>
           <div style={styles.rule} />
           <div style={styles.galleryFrame}>
-            <img src={image_3} alt={`${t.groomName} and ${t.brideName}`} style={{ width: "100%" }} />
-            <img src={image_1} alt={`${t.groomName} and ${t.brideName}`} style={{ width: "100%" }} />
-            <img src={image_2} alt={`${t.groomName} and ${t.brideName}`} style={{ width: "100%" }} />
+            {galleryImages.map((image, index) => (
+              <div key={`${image}-${index}`} style={styles.galleryTile}>
+                <img src={image} alt={`${t.groomName} and ${t.brideName}`} style={styles.galleryImage} />
+              </div>
+            ))}
           </div>
           <p style={styles.galleryCaption}>{t.galleryCaption}</p>
         </div>
@@ -470,7 +480,33 @@ const styles = {
   eventName: { fontFamily: serifDisplay, fontWeight: 600, fontSize: "clamp(22px,4vw,28px)", color: colors.maroon, margin: "6px 0 10px" },
   eventDate: { fontSize: 17, color: colors.ink, margin: 0 },
   eventDay: { fontSize: 14, color: colors.inkSoft, marginTop: 2 },
-  galleryFrame: { maxWidth: 420, margin: "34px auto 0", padding: 12, background: "#fff", border: `1px solid ${colors.rule}`, boxShadow: "0 18px 50px -24px rgba(43,33,24,0.4)" },
+  galleryFrame: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: 50,
+    maxWidth: 700,
+    margin: "34px auto 0",
+    padding: 16,
+    background: "linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,245,238,0.94))",
+    border: `1px solid ${colors.rule}`,
+    boxShadow: "0 20px 60px -28px rgba(43,33,24,0.42)",
+  },
+  galleryTile: {
+    overflow: "hidden",
+    border: `1px solid rgba(184,145,47,0.35)`,
+    background: "#f7f1e7",
+    aspectRatio: "4 / 5",
+    boxShadow: "0 10px 24px rgba(43,33,24,0.12)",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+  galleryImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+    filter: "saturate(0.95) contrast(1.02)",
+    transform: "scale(1.01)",
+  },
   galleryCaption: { marginTop: 14, fontStyle: "italic", color: colors.inkSoft, fontSize: 15 },
   venueSection: { background: `linear-gradient(180deg, ${colors.ivoryDim}, ${colors.ivory})`, padding: "64px 0" },
   venueCity: { marginTop: 6, fontSize: 18, color: colors.inkSoft },
